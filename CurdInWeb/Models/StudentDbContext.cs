@@ -54,6 +54,29 @@ namespace CurdInWeb.Models
                 return false; 
             }
         }
-   
+        //update student
+        public bool UpdateStudent(Students student)
+        {
+            SqlConnection con = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("spUpdateEmployee", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@id", student.Id);
+            cmd.Parameters.AddWithValue("@name", student.Name);
+            cmd.Parameters.AddWithValue("@Department", student.Department);
+            cmd.Parameters.AddWithValue("@Course", student.Course);
+            cmd.Parameters.AddWithValue("@Address", student.Address);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

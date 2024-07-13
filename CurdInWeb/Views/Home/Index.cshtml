@@ -3,11 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
-@*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
 <h2>Index</h2>
-<h3>@TempData["InsertMessage"]</h3>
+
+@if (TempData["UpdateStudent"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>Success!</strong>@TempData["UpdateStudent"]
+    </div>
+}
+@if (TempData["InsertMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>Insert Successful</strong>@TempData["InsertMessage"]
+    </div>
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -20,8 +29,8 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Age)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Department)
         </th>
@@ -43,8 +52,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             @*<td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>*@
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Department)
             </td>
