@@ -78,5 +78,26 @@ namespace CurdInWeb.Models
                 return false;
             }
         }
+        //delete
+        public bool Delete(int id)
+        {
+            SqlConnection con = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("spDeleteEmployee", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@id", id);
+           
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
