@@ -70,6 +70,34 @@ namespace CurdInWeb.Controllers
 
             return View();
         }
+        //delete data
+        public ActionResult Delete(int id)
+        {
+            StudentDbContext context = new StudentDbContext();
+            var row = context.GeStudents().Find(model => model.Id == id);
+            return View(row);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id,Students students)
+        {
+            StudentDbContext context = new StudentDbContext();
+            bool check = context.Delete(id);
+            if (check == true)
+            {
+                TempData["DeleteStudent"] = "data delete successful";
+                ModelState.Clear();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            StudentDbContext context = new StudentDbContext();
+            var row = context.GeStudents().Find(model => model.Id == id);
+            return View(row);
+        }
+
 
     }
 }

@@ -17,23 +17,29 @@
         <strong>Insert Successful</strong>@TempData["InsertMessage"]
     </div>
 }
+@if (TempData["DeleteStudent"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>Delete Successful</strong>@TempData["DeleteStudent"]
+    </div>
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table table-hover">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Id)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.Age)
             </th>*@
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Department)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Course)
         </th>
@@ -45,18 +51,18 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.Age)
                 </td>*@
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Department)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Course)
             </td>
